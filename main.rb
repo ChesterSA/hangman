@@ -125,17 +125,17 @@ class Hangman
   end
 
   # @param [FalseClass] display If true, will put working strings to the console
-  # @return [Hash{null->null}] An array of the most difficult words with how many guesses they took
+  # @return [Hash{null->null}] A hash of the most difficult words with how many guesses they took
   def full_search_efficient (display = false)
     output = {}
-    words =  full_search_simple(display).select { |k, v| v >= 24 }.keys.dup
+    words =  full_search_simple(display).select { |_k, v| v >= 24 }.keys.dup
 
     puts words.size if display
 
     i = 0
     words.each do |hangman|
       i += 1
-      puts "#{i} - #{hangman}" if (i % 10).zero? if display
+      puts "#{i} - #{hangman}" if (i % 10).zero? && display
       output[hangman] = guess_complex(hangman, display)
     end
 
