@@ -293,11 +293,7 @@ class Hangman
 end
 
 time = Benchmark.measure do
-  hangman = Hangman.new "words.txt"
-  arr = hangman.full_search_complex(false).values.to_a
-  puts "Average Guesses: #{arr.inject { |sum, el| sum + el }.to_f / arr.size}"
-  # puts(hangman.full_search_efficient(false).select { |_k, v| v > 16})
-  # puts(output)
+  hangman = Hangman.new 'words.txt'
+  puts hangman.guess_complex 'jazz'
 end
 puts "Total Time: #{time.real}"
-puts "Average Time: #{time.real / 65_000}"
